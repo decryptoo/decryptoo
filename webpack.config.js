@@ -2,13 +2,37 @@
 const path = require('path');
 const colors = require('colors');
 
+(function () {
+    const log = console.log;
+    const fix = function (o) {
+        if (typeof o === 'string') {
+            return o
+                .replace(/(\x1b\[94m)/g, '\x1b[36m')
+                .replace(/(\x1b\[34m)/g, '\x1b[36m')
+                .replace(/｢/g, '\[')
+                .replace(/｣/g, '\]');
+        } else {
+            return o;
+        }
+    };
+    const fixa = function (args) {
+        return Array.from(args).map(o => fix(o));
+    };
+    const log2 = function () {
+        log.apply(null, fixa(arguments));
+    };
+    console.info = log2;
+    console.debug = log2;
+    console.log = log2;
+})();
+
 module.exports = function (env, argv) {
     const prod = argv.mode === 'production';
     const mode = prod ? 'production' : 'development';
     console.log('Mode: ' + colors.yellow.bold(mode));
     return {
         mode: mode,
-        entry: path.resolve('./js/app.ts'),
+        entry: path.resolve('./js/app.tsx'),
         devtool: prod ? 'none' : 'eval',
         externals: {
             'lodash': '_',
@@ -19,7 +43,9 @@ module.exports = function (env, argv) {
             'react': 'React',
             'react-dom': 'ReactDOM'
         },
-        devServer: {},
+        devServer: {
+            contentBase: path.resolve('.')
+        },
         module: {
             rules: [{
                 test: /\.tsx?$/,
@@ -45,8 +71,8 @@ module.exports = function (env, argv) {
             extensions: ['.tsx', '.ts', '.js']
         },
         output: {
-            filename: '[name].js',
-            path: path.resolve('./build')
+            filename: 'build/[name].js',
+            path: path.resolve('.')
         },
         performance: {
             maxAssetSize: 10e6

@@ -9,6 +9,8 @@
       "single",
       "jsx-double"
     ],
-    "no-console": false
+    "no-console": false,
+    "jsx-wrap-multiline": false,
+    "no-duplicate-imports": false
   }
 }

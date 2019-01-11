@@ -4,6 +4,7 @@
   "description": "",
   "private": true,
   "dependencies": {
+    "@types/react": "^16.7.18",
     "classnames": "2.2.6",
     "lodash": "4.17.11",
     "mobx": "5.8.0",
@@ -23,6 +24,7 @@
     "tslint-react": "^3.6.0",
     "typescript": "^3.2.2",
     "webpack": "^4.28.4",
-    "webpack-cli": "^3.2.1"
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
   }
 }
