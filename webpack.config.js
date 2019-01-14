@@ -47,23 +47,28 @@ module.exports = function (env, argv) {
         },
         module: {
             rules: [{
+                exclude: [path.resolve('./node_modules')],
                 test: /\.tsx?$/,
                 use: ['ts-loader', {
                     loader: 'tslint-loader',
                     options: {
                         formatter: 'verbose'
                     }
-                }],
-                exclude: /node_modules/
+                }]
             }, {
+                exclude: [path.resolve('./css/theme')],
                 test: /\.styl$/,
-                use: ['style-loader', 'css-loader', {
+                use: ['raw-loader', {
                     loader: 'stylus-loader',
                     options: {
                         'resolve url': true,
                         preferPathResolver: 'webpack'
                     }
                 }]
+            }, {
+                include: [path.resolve('./css/theme')],
+                test: /\.styl$/,
+                use: ['raw-loader']
             }]
         },
         resolve: {

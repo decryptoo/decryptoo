@@ -12,6 +12,8 @@
     "no-console": false,
     "jsx-wrap-multiline": false,
     "no-duplicate-imports": false,
-    "no-var-requires": false
+    "no-var-requires": false,
+    "max-classes-per-file": false,
+    "arrow-parens": false
   }
 }
