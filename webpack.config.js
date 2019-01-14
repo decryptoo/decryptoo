@@ -36,10 +36,9 @@ module.exports = function (env, argv) {
         devtool: prod ? 'none' : 'eval',
         externals: {
             'lodash': '_',
-            'jquery': 'jQuery',
+            'classnames': 'classNames',
             'mobx': 'mobx',
             'mobx-react': 'mobxReact',
-            'moment': 'moment',
             'react': 'React',
             'react-dom': 'ReactDOM'
         },
