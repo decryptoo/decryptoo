@@ -32,7 +32,9 @@ module.exports = function (env, argv) {
     console.log('Mode: ' + colors.yellow.bold(mode));
     return {
         mode: mode,
-        entry: path.resolve('./js/app.tsx'),
+        entry: {
+            app: path.resolve('./js/app.tsx')
+        },
         devtool: prod ? 'none' : 'eval',
         externals: {
             'lodash': '_',
