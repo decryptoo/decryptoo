@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "noImplicitAny": false,
     "module": "es6",
     "target": "es5",
     "jsx": "react",
@@ -12,6 +11,6 @@
     ],
     "moduleResolution": "node",
     "importHelpers": true,
-    "strictNullChecks": true
+    "strict": true
   }
 }
