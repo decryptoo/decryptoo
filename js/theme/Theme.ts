@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 class Util {
     public static parse(text: string): object {
         const lines = text.split(/[\n\r]/g);
-        return lines.reduce((result: object, line: string) => {
+        return lines.reduce((result: any, line: string) => {
             const pair: string[] = line.split('=').map(_.trim);
             if (pair.length === 2) {
                 result[pair[0]] = pair[1];
@@ -12,7 +12,7 @@ class Util {
         }, {});
     }
 
-    public static decorate(css: string, theme: string, config: object): void {
+    public static decorate(css: string, theme: string, config: any): void {
         document.querySelectorAll('style.app').forEach(node => node.remove());
         const style = document.createElement('style');
         style.className = 'app';
@@ -51,11 +51,6 @@ class Manager {
 }
 
 const manager = new Manager();
-
-// tslint:disable-next-line
-window['theme'] = theme => {
-    manager.theme(theme);
-};
 
 export default class Theme {
     public static use(theme: string) {
